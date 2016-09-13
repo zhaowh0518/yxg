@@ -9,7 +9,7 @@
 			<property name="suppressAllComments" value="true" />
 		</commentGenerator>
 		<jdbcConnection driverClass="com.mysql.jdbc.Driver"
-			connectionURL="jdbc:mysql://123.56.90.227:3306/social?useUnicode=true&amp;characterEncoding=utf-8"
+			connectionURL="jdbc:mysql://127.0.0.1:3306/social?useUnicode=true&amp;characterEncoding=utf-8"
 			userId="root" password="NWQC8PqS" />
 		<javaModelGenerator targetPackage="com.zwh.social.api.model"
 			targetProject="api" />
@@ -17,7 +17,7 @@
 			targetProject="api" />
 		<javaClientGenerator targetPackage="com.zwh.social.api.mapper"
 			targetProject="api" type="XMLMAPPER" />
-		<table tableName="user" domainObjectName="User"
+		<table tableName="pay" domainObjectName="Pay"
 			enableCountByExample="false" enableUpdateByExample="false"
 			enableDeleteByExample="false" enableSelectByExample="false"
 			selectByExampleQueryId="false">

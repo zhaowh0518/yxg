@@ -3,131 +3,83 @@ package com.zwh.social.api.model;
 import java.util.Date;
 
 public class Pay {
-    private Integer payid;
+    private Integer payId;
 
-    private String orderno;
+    private Integer userId;
 
-    private Integer reguserid;
+    private String orderNo;
+    
+    private Integer orderType;
 
-    private Float amount;
-    
-    private Integer orderid;
-    
-    private Integer ordertype;
-    
-    private String ordersubject;
-    
-    private String orderbody;
+	private Double amount;
+
+    private String subject;
+
+    private String body;
 
     private String channel;
-    
-    private Integer orderstate;
 
-	private Date createdate;
-	
-	/**
-	 * 客户端ip非持久化字段，用于提供给支付接口
-	 */
-	private String clientip;
+    private String ip;
 
-	public String getClientip() {
-		return clientip;
-	}
+    private Integer state;
 
-	public void setClientip(String clientip) {
-		this.clientip = clientip;
-	}
-	
-	/**
-	 * 微信openid，非持久化字段，用于提供给支付接口
-	 */
-	private String openid;	
+    private Date createDate;
 
-	public String getOpenid() {
-		return openid;
-	}
-
-	public void setOpenid(String openid) {
-		this.openid = openid;
-	}
-	
-	/**
-	 * PC支付成功跳转的url
-	 */
-	private String successurl;
-		
-	public String getSuccessurl() {
-		return successurl;
-	}
-
-	public void setSuccessurl(String successurl) {
-		this.successurl = successurl;
-	}
-
-	public Integer getPayid() {
-        return payid;
+    public Integer getPayId() {
+        return payId;
     }
 
-    public void setPayid(Integer payid) {
-        this.payid = payid;
+    public void setPayId(Integer payId) {
+        this.payId = payId;
     }
 
-    public String getOrderno() {
-        return orderno;
+    public Integer getUserId() {
+        return userId;
     }
 
-    public void setOrderno(String orderno) {
-        this.orderno = orderno;
+    public void setUserId(Integer userId) {
+        this.userId = userId;
     }
 
-    public Integer getReguserid() {
-        return reguserid;
+    public String getOrderNo() {
+        return orderNo;
     }
 
-    public void setReguserid(Integer reguserid) {
-        this.reguserid = reguserid;
+    public void setOrderNo(String orderNo) {
+        this.orderNo = orderNo;
     }
 
-    public Float getAmount() {
+    public Integer getOrderType() {
+		return orderType;
+	}
+
+	public void setOrderType(Integer orderType) {
+		this.orderType = orderType;
+	}
+
+    public Double getAmount() {
         return amount;
     }
 
-    public void setAmount(Float amount) {
+    public void setAmount(Double amount) {
         this.amount = amount;
     }
-    
-    public Integer getOrderid() {
-		return orderid;
-	}
 
-	public void setOrderid(Integer orderid) {
-		this.orderid = orderid;
-	}
+    public String getSubject() {
+        return subject;
+    }
 
-	public Integer getOrdertype() {
-		return ordertype;
-	}
+    public void setSubject(String subject) {
+        this.subject = subject;
+    }
 
-	public void setOrdertype(Integer ordertype) {
-		this.ordertype = ordertype;
-	}
+    public String getBody() {
+        return body;
+    }
 
-	public String getOrdersubject() {
-		return ordersubject;
-	}
-
-	public void setOrdersubject(String ordersubject) {
-		this.ordersubject = ordersubject;
-	}
-
-	public String getOrderbody() {
-		return orderbody;
-	}
-
-	public void setOrderbody(String orderbody) {
-		this.orderbody = orderbody;
-	}
-
+    public void setBody(String body) {
+        this.body = body;
+    }
 
     public String getChannel() {
         return channel;
@@ -137,19 +89,27 @@ public class Pay {
         this.channel = channel;
     }
 
-    public Integer getOrderstate() {
-		return orderstate;
-	}
-
-	public void setOrderstate(Integer orderstate) {
-		this.orderstate = orderstate;
-	}
-	
-    public Date getCreatedate() {
-        return createdate;
+    public String getIp() {
+        return ip;
     }
 
-    public void setCreatedate(Date createdate) {
-        this.createdate = createdate;
+    public void setIp(String ip) {
+        this.ip = ip;
+    }
+
+    public Integer getState() {
+        return state;
+    }
+
+    public void setState(Integer state) {
+        this.state = state;
+    }
+
+    public Date getCreateDate() {
+        return createDate;
+    }
+
+    public void setCreateDate(Date createDate) {
+        this.createDate = createDate;
     }
 }

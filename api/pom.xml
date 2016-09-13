@@ -41,8 +41,8 @@
 		<fastjson.version>1.2.3</fastjson.version>
 		<!-- jdbc的配置 -->
 		<jdbc.driverClassName>com.mysql.jdbc.Driver</jdbc.driverClassName>
-		<jdbc.url><![CDATA[jdbc:mysql://123.56.90.227:3306/social?useUnicode=true&amp;characterEncoding=utf-8]]></jdbc.url>
-		<jdbc.url.slave><![CDATA[jdbc:mysql://123.56.90.227:3306/social?useUnicode=true&amp;characterEncoding=utf-8]]></jdbc.url.slave>
+		<jdbc.url><![CDATA[jdbc:mysql://127.0.0.1:3306/social?useUnicode=true&amp;characterEncoding=utf-8]]></jdbc.url>
+		<jdbc.url.slave><![CDATA[jdbc:mysql://127.0.0.1:3306/social?useUnicode=true&amp;characterEncoding=utf-8]]></jdbc.url.slave>
 		<jdbc.username>root</jdbc.username>
 		<jdbc.password>NWQC8PqS</jdbc.password>
 		<jdbc.validationQuery><![CDATA[SELECT 1 + 1]]></jdbc.validationQuery>
