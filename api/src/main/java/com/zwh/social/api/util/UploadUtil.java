@@ -34,21 +34,21 @@ public class UploadUtil {
 	/**
 	 * Access Key ID
 	 */
-	private static final String accessKeyId = "4C0zsHgP6EPQLP7X";
+	private static final String accessKeyId = "LTAIybh0rEQmL64w";
 	/**
 	 * Access Key Secret
 	 */
-	private static final String accessKeySecret = "ih49kcTxtzIAlDnDJVv001AANHS0aK";
+	private static final String accessKeySecret = "lgaodii9ODzTxtErXCoQPvuQBaIUtP";
 	
 	/**
 	 * Bucket的名称
 	 */
-	private static final String bucketName = "vipski-test";
+	private static final String bucketName = "aiduomai-social";
 
 	/**
 	 * Bucket的域名
 	 */
-	private static final String endpoint = "http://oss-cn-beijing.aliyuncs.com";
+	private static final String endpoint = "http://oss-cn-qingdao.aliyuncs.com";
 
 	/**
 	 * 头像

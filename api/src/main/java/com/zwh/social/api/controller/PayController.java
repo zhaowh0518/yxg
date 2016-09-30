@@ -115,7 +115,6 @@ public class PayController {
 	public String paid(HttpServletRequest request, HttpServletResponse response) {
 		try {
 			String data = HttpUtil.readPostData(request);
-			System.out.println(data);
 			Pay pay = PAY_Pingxx.getPay(data);
 			pay.setState(Constant.ORDER_STATE_PAID);
 			payService.update(pay);

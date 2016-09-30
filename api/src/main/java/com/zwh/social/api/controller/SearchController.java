@@ -39,7 +39,7 @@ public class SearchController {
 	public String list(HttpServletRequest request, HttpServletResponse response) {
 		try {
 			JSONObject params = HttpUtil.getRequestJson(request);
-			User term = JSON.parseObject(params.toJSONString(), User.class);
+			User term = JSON.parseObject(params.getString("term"), User.class);
 			Integer pageNum = params.getInteger("pageNum");
 			Integer pageSize = params.getInteger("pageSize");
 			//客户端没有传省份，取用户基本信息中的省份
@@ -72,7 +72,7 @@ public class SearchController {
 	public String user(HttpServletRequest request, HttpServletResponse response) {
 		try {
 			JSONObject params = HttpUtil.getRequestJson(request);
-			User term = JSON.parseObject(params.toJSONString(), User.class);
+			User term = JSON.parseObject(params.getString("term"), User.class);
 			Integer pageNum = params.getInteger("pageNum");
 			Integer pageSize = params.getInteger("pageSize");
 			List<User> userList = userService.search(term);			

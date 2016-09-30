@@ -4,6 +4,8 @@ import java.net.URLEncoder;
 
 import javax.servlet.http.HttpServletResponse;
 
+import org.apache.commons.lang.StringUtils;
+
 import com.alibaba.fastjson.JSONObject;
 /**
  * 返回客户端的消息封装
@@ -22,7 +24,9 @@ public class ResultMsg {
 		try {
 			response.setCharacterEncoding("UTF-8");
 			response.setHeader("errorCode", String.valueOf(code));
-			response.setHeader("errorMsg",  URLEncoder.encode(msg, "UTF-8"));
+			if(StringUtils.isNotEmpty(msg)){
+				response.setHeader("errorMsg",  URLEncoder.encode(msg, "UTF-8"));
+			}
 		} catch (Exception e) {
 			e.printStackTrace();
 		}

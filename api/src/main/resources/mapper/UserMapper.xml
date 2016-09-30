@@ -111,7 +111,7 @@
     where username = #{username,jdbcType=VARCHAR} and pwd = #{pwd,jdbcType=VARCHAR}
   </select>
   <insert id="add" parameterType="com.zwh.social.api.model.User" 
-  	useGeneratedKeys="true" keyProperty="user_id">
+  	useGeneratedKeys="true" keyProperty="userId">
     insert into user (user_id, user_type, user_no, 
       channel, username, pwd, 
       nickname, sex, age, 
