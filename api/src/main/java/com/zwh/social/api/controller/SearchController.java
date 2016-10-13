@@ -7,6 +7,7 @@ import java.util.Map;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import org.apache.commons.lang.StringUtils;
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -36,7 +37,7 @@ public class SearchController {
 	 */
 	@RequestMapping("/list")
 	@ResponseBody
-	public String list(HttpServletRequest request, HttpServletResponse response) {
+	public JSONObject list(HttpServletRequest request, HttpServletResponse response) {
 		try {
 			JSONObject params = HttpUtil.getRequestJson(request);
 			User term = JSON.parseObject(params.getString("term"), User.class);
@@ -51,14 +52,13 @@ public class SearchController {
 			Map<String,Object> result = new HashMap<String,Object>();
 			result.put("count", userList.size());
 			result.put("list", pager(userList,pageNum,pageSize));
-			return ResultMsg.json(result);
+			return ResultMsg.success(result);
 			
 		} catch (Exception ex) {
 			logger.info("SearchController/list : " + ex.getMessage());
 			ex.printStackTrace();			
-			ResultMsg.error(0, ex.getMessage(), response);
+			return ResultMsg.error(ex);
 		}
-		return "";
 	}
 	
 	/***
@@ -69,7 +69,7 @@ public class SearchController {
 	 */
 	@RequestMapping("/user")
 	@ResponseBody
-	public String user(HttpServletRequest request, HttpServletResponse response) {
+	public JSONObject user(HttpServletRequest request, HttpServletResponse response) {
 		try {
 			JSONObject params = HttpUtil.getRequestJson(request);
 			User term = JSON.parseObject(params.getString("term"), User.class);
@@ -79,14 +79,32 @@ public class SearchController {
 			Map<String,Object> result = new HashMap<String,Object>();
 			result.put("count", userList.size());
 			result.put("list", pager(userList,pageNum,pageSize));
-			return ResultMsg.json(result);			
+			return ResultMsg.success(result);			
 			
 		} catch (Exception ex) {
 			logger.info("SearchController/user : " + ex.getMessage());
 			ex.printStackTrace();			
-			ResultMsg.error(0, ex.getMessage(), response);
+			return ResultMsg.error(ex);
 		}
-		return "";
+	}
+	@RequestMapping("/test")
+	@ResponseBody
+	public JSONObject test(HttpServletRequest request, HttpServletResponse response) {
+		try {
+			String params = request.getParameter("p");
+			if(StringUtils.isNotEmpty(params)){
+				return ResultMsg.failed("错误的参数方式，params=" + params);
+			}else if(null == params){
+				return ResultMsg.failed("没有接收到任何参数");
+			}else{
+				return ResultMsg.success(params);
+			}
+			
+		} catch (Exception ex) {
+			logger.info("SearchController/test : " + ex.getMessage());
+			ex.printStackTrace();			
+			return ResultMsg.error(ex);
+		}
 	}
 	/**
 	 * List 分页

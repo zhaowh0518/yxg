@@ -201,11 +201,27 @@ public class HttpUtil {
          return map;
     }
     /**
-     * 获取request中的参数并转化为JSON格式
+     * 读取request中的params，返回JSON格式
      * @param request
      * @return
      */
     public static JSONObject getRequestJson(HttpServletRequest request){
+    	try {
+    		String params = request.getParameter("p");
+    		if(StringUtils.isNotEmpty(params)){
+    			return JSONObject.parseObject(params);
+    		}
+        } catch (Exception e) {
+            // 解析失败的不做任何处理
+        }
+		return null;    	
+    }
+    /**
+     * 获取request中的参数并转化为JSON格式
+     * @param request
+     * @return
+     */
+    public static JSONObject getRequestJson2(HttpServletRequest request){
     	try {
             InputStream inputStream = request.getInputStream();
             ByteArrayOutputStream bo = new ByteArrayOutputStream();
@@ -217,7 +233,8 @@ public class HttpUtil {
             byte[] reqParam = bo.toByteArray();
             // 将字节转换为字符
             String json = URLDecoder.decode(new String(reqParam, "UTF-8"), "UTF-8");
-            if (!StringUtils.isBlank(json)) {
+            System.out.println(json);
+            if (StringUtils.isNotEmpty(json)) {
                 return JSONObject.parseObject(json);
             }
         } catch (Exception e) {

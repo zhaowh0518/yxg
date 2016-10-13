@@ -42,7 +42,7 @@ public class PayController {
 	 */
 	@RequestMapping("/month")
 	@ResponseBody
-	public String month(HttpServletRequest request, HttpServletResponse response) {
+	public JSONObject month(HttpServletRequest request, HttpServletResponse response) {
 		try {
 			JSONObject params = HttpUtil.getRequestJson(request);
 			Integer userId = params.getInteger("userId");
@@ -57,12 +57,11 @@ public class PayController {
 			
 			payService.add(pay);
 			
-			return ResultMsg.json(PAY_Pingxx.getCharge(pay));
+			return ResultMsg.success(PAY_Pingxx.getCharge(pay));
 		} catch (Exception ex) {
 			logger.info("PayController/month : " + ex.getMessage());
 			ex.printStackTrace();
-			ResultMsg.error(0, ex.getMessage(), response);
-			return "";
+			return ResultMsg.error(ex);
 		}
 	}
 	
@@ -74,7 +73,7 @@ public class PayController {
 	 */
 	@RequestMapping("/vip")
 	@ResponseBody
-	public String vip(HttpServletRequest request, HttpServletResponse response) {
+	public JSONObject vip(HttpServletRequest request, HttpServletResponse response) {
 		try {
 			JSONObject params = HttpUtil.getRequestJson(request);
 			Integer userId = params.getInteger("userId");
@@ -89,12 +88,11 @@ public class PayController {
 			
 			payService.add(pay);
 			
-			return ResultMsg.json(PAY_Pingxx.getCharge(pay));
+			return ResultMsg.success(PAY_Pingxx.getCharge(pay));
 		} catch (Exception ex) {
 			logger.info("PayController/vip : " + ex.getMessage());
 			ex.printStackTrace();
-			ResultMsg.error(0, ex.getMessage(), response);
-			return "";
+			return ResultMsg.error(ex);
 		}
 	}
 

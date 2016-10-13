@@ -1,4 +1,4 @@
-package com.zwh.social.api;
+package com.zwh.social.api.util.json;
 
 import com.alibaba.fastjson.JSONObject;
 import com.zwh.social.api.util.JsonUtil;

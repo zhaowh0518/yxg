@@ -43,7 +43,7 @@ public class UserController {
 	 */
 	@RequestMapping("/register")
 	@ResponseBody
-	public String register(HttpServletRequest request, HttpServletResponse response) {
+	public JSONObject register(HttpServletRequest request, HttpServletResponse response) {
 		try {
 			JSONObject params = HttpUtil.getRequestJson(request);
 			String channel = params.getString("channel");
@@ -57,14 +57,13 @@ public class UserController {
 			
 			Map<String,Object> result = new HashMap<String,Object>();
 			result.put("userId", userId);			
-			return ResultMsg.json(result);
+			return ResultMsg.success(result);
 			
 		} catch (Exception ex) {
 			logger.info("UserController/register : " + ex.getMessage());
 			ex.printStackTrace();			
-			ResultMsg.error(0, ex.getMessage(), response);
+			return ResultMsg.error(ex);
 		}
-		return "";
 	}
 	
 	/***
@@ -75,7 +74,7 @@ public class UserController {
 	 */
 	@RequestMapping("/login")
 	@ResponseBody
-	public String login(HttpServletRequest request, HttpServletResponse response) {
+	public JSONObject login(HttpServletRequest request, HttpServletResponse response) {
 		try {
 			JSONObject params = HttpUtil.getRequestJson(request);
 			String username = params.getString("username");
@@ -84,14 +83,13 @@ public class UserController {
 			
 			Map<String,Object> result = new HashMap<String,Object>();
 			result.put("userId", userId);
-			return ResultMsg.json(result);
+			return ResultMsg.success(result);
 			
 		} catch (Exception ex) {
 			logger.info("UserController/login : " + ex.getMessage());
 			ex.printStackTrace();			
-			ResultMsg.error(0, ex.getMessage(), response);
+			return ResultMsg.error(ex);
 		}
-		return "";
 	}
 	/***
 	 * 个人信息
@@ -101,7 +99,7 @@ public class UserController {
 	 */
 	@RequestMapping("/detail")
 	@ResponseBody
-	public String detail(HttpServletRequest request, HttpServletResponse response) {
+	public JSONObject detail(HttpServletRequest request, HttpServletResponse response) {
 		try {
 			JSONObject params = HttpUtil.getRequestJson(request);
 			Map<String,Object> result = new HashMap<String,Object>();
@@ -112,14 +110,13 @@ public class UserController {
 					result.put("user", user);
 				}
 			}
-			return ResultMsg.json(result);
+			return ResultMsg.success(result);
 			
 		} catch (Exception ex) {
 			logger.info("UserController/detail : " + ex.getMessage());
 			ex.printStackTrace();			
-			ResultMsg.error(0, ex.getMessage(), response);
+			return ResultMsg.error(ex);
 		}
-		return "";
 	}
 	/***
 	 * 更新个人资料
@@ -129,7 +126,7 @@ public class UserController {
 	 */
 	@RequestMapping("/update")
 	@ResponseBody
-	public String update(HttpServletRequest request, HttpServletResponse response) {
+	public JSONObject update(HttpServletRequest request, HttpServletResponse response) {
 		try {
 			JSONObject params = HttpUtil.getRequestJson(request);
 			User user = JSON.parseObject(params.toJSONString(), User.class);			
@@ -140,14 +137,13 @@ public class UserController {
 					result.put("result", 1);
 				}
 			}
-			return ResultMsg.json(result);
+			return ResultMsg.success(result);
 			
 		} catch (Exception ex) {
 			logger.info("UserController/update : " + ex.getMessage());
 			ex.printStackTrace();			
-			ResultMsg.error(0, ex.getMessage(), response);
+			return ResultMsg.error(ex);
 		}
-		return "";
 	}
 	/***
 	 * 上传图片
@@ -157,7 +153,7 @@ public class UserController {
 	 */
 	@RequestMapping("/upload")
 	@ResponseBody
-	public String upload(HttpServletRequest request, HttpServletResponse response) {
+	public JSONObject upload(HttpServletRequest request, HttpServletResponse response) {
 		try {
 			JSONObject params = HttpUtil.getRequestJson(request);		
 			Map<String,Object> result = new HashMap<String,Object>();
@@ -199,16 +195,14 @@ public class UserController {
 					}
 				}
 			}else{
-				ResultMsg.error(0,"空文件", response);
-				return "";
+				return ResultMsg.failed("空文件");
 			}			
-			return ResultMsg.json(result);
+			return ResultMsg.success(result);
 			
 		} catch (Exception ex) {
 			logger.info("UserController/upload : " + ex.getMessage());
 			ex.printStackTrace();			
-			ResultMsg.error(0, ex.getMessage(), response);
+			return ResultMsg.error(ex);
 		}
-		return "";
 	}
 }
